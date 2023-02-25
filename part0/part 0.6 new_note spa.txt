@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant browser
+    participant server
+    
+    Note over browser: The input content of the note is<br/>sent as JSON data with<br/> content and timestamp
+
+    browser->>server: HTTPS POST https://studies.cs.helsinki.fi/exampleapp/new_note/spa
+    activate server
+
+    Note over server: Server appends the JSON data into the data.json
+
+    server-->browser: STATUS CODE 201 
+    deactivate server
+
+    Note over browser: No redirecting,the browser stays on the<br/> same page and does not send any<br/> further HTTP requests
